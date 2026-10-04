@@ -1,0 +1,466 @@
+/* ============================================================
+   BC EATS — CHECKOUT PAGE
+   WFS361 CAPSTONE
+   Premium compact checkout layout
+   ============================================================ */
+
+.checkout-page {
+  min-height: 100vh;
+
+  padding-bottom: 72px;
+
+  background:
+    radial-gradient(
+      circle at 12% 0%,
+      rgba(31, 138, 112, 0.10),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 88% 12%,
+      rgba(123, 17, 19, 0.06),
+      transparent 30%
+    ),
+    #090909;
+
+  color: var(--text-primary);
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.checkout-page__header {
+  position: relative;
+
+  width: 100%;
+
+  padding:
+    48px 0 42px;
+
+  overflow: hidden;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.07);
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(15, 61, 46, 0.08),
+      transparent
+    );
+}
+
+.checkout-page__header::after {
+  content: '';
+
+  position: absolute;
+
+  left: 45%;
+  bottom: -190px;
+
+  width: 560px;
+  height: 300px;
+
+  transform: translateX(-50%);
+
+  border-radius: 50%;
+
+  background:
+    rgba(31, 138, 112, 0.07);
+
+  filter: blur(100px);
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   HEADER INNER
+   ============================================================ */
+
+.checkout-page__header-inner {
+  position: relative;
+
+  z-index: 1;
+
+  width: min(
+    calc(100% - 160px),
+    1440px
+  );
+
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   BACK BUTTON
+   ============================================================ */
+
+.checkout-page__back {
+  padding-top: 0.9rem;
+  margin-top: 0.8rem;
+  
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-bottom: 26px;
+
+  color: #8d9692;
+
+  font-size: 0.82rem;
+
+  font-weight: 600;
+
+  line-height: 1;
+
+  text-decoration: none;
+
+  transition:
+    color 180ms ease,
+    transform 180ms ease;
+}
+
+.checkout-page__back:hover {
+  color: var(--color-emerald);
+
+  transform: translateX(-3px);
+}
+
+.checkout-page__back svg {
+  width: 17px;
+  height: 17px;
+
+  flex: 0 0 auto;
+}
+
+
+/* ============================================================
+   HEADING
+   ============================================================ */
+
+.checkout-page__heading {
+  max-width: 760px;
+}
+
+.checkout-page__eyebrow {
+  margin: 0 0 10px;
+
+  color: var(--color-emerald);
+
+  font-size: 0.7rem;
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.12em;
+}
+
+.checkout-page__title {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(2.3rem, 4vw, 3.5rem);
+
+  font-weight: 700;
+
+  line-height: 1;
+
+  letter-spacing: -0.045em;
+
+  color: var(--color-white);
+}
+
+.checkout-page__description {
+  max-width: 570px;
+
+  margin: 16px 0 0;
+
+  color: #8f9793;
+
+  font-size: 0.95rem;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.checkout-page__content {
+  width: min(
+    calc(100% - 160px),
+    1440px
+  );
+
+  margin-inline: auto;
+
+  padding-top: 44px;
+}
+
+
+/* ============================================================
+   CHECKOUT GRID
+   ============================================================ */
+
+.checkout-page__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1.55fr)
+    minmax(340px, 0.9fr);
+
+  align-items: start;
+
+  gap: 28px;
+}
+
+
+/* ============================================================
+   FORM / SUMMARY SURFACE SUPPORT
+   ============================================================ */
+
+.checkout-page__grid > * {
+  min-width: 0;
+}
+
+
+/* ============================================================
+   EMPTY CHECKOUT
+   ============================================================ */
+
+.checkout-page--empty {
+  min-height: calc(100vh - 80px);
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+}
+
+.checkout-page__empty-container {
+  width: min(
+    100%,
+    580px
+  );
+
+  margin-inline: auto;
+}
+
+
+/* ============================================================
+   ERROR
+   ============================================================ */
+
+.checkout-page__error {
+  margin-bottom: 20px;
+
+  padding: 15px 18px;
+
+  border-radius: 16px;
+
+  background:
+    rgba(123, 17, 19, 0.11);
+
+  border:
+    1px solid rgba(123, 17, 19, 0.32);
+
+  color: #ffb9b9;
+
+  font-size: 0.82rem;
+
+  font-weight: 500;
+
+  line-height: 1.5;
+
+  box-shadow:
+    0 10px 30px rgba(123, 17, 19, 0.06);
+}
+
+
+/* ============================================================
+   LARGE DESKTOP
+   ============================================================ */
+
+@media (min-width: 1441px) {
+
+  .checkout-page__header-inner,
+  .checkout-page__content {
+    width: min(
+      calc(100% - 160px),
+      1440px
+    );
+  }
+}
+
+
+/* ============================================================
+   LAPTOP
+   ============================================================ */
+
+@media (max-width: 1200px) {
+
+  .checkout-page__header-inner,
+  .checkout-page__content {
+    width: calc(100% - 96px);
+  }
+
+  .checkout-page__grid {
+    grid-template-columns:
+      minmax(0, 1.45fr)
+      minmax(310px, 0.9fr);
+
+    gap: 24px;
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .checkout-page__header {
+    padding:
+      42px 0 36px;
+  }
+
+  .checkout-page__content {
+    padding-top: 36px;
+  }
+
+  .checkout-page__grid {
+    grid-template-columns: 1fr;
+
+    gap: 24px;
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+
+  .checkout-page {
+    padding-bottom: 48px;
+  }
+
+  .checkout-page__header-inner,
+  .checkout-page__content {
+    width: calc(100% - 40px);
+  }
+
+  .checkout-page__header {
+    padding:
+      32px 0 30px;
+  }
+
+  .checkout-page__back {
+    margin-bottom: 22px;
+
+    font-size: 0.78rem;
+  }
+
+  .checkout-page__title {
+    font-size:
+      clamp(2rem, 10vw, 2.8rem);
+
+    line-height: 1.02;
+  }
+
+  .checkout-page__description {
+    margin-top: 13px;
+
+    font-size: 0.88rem;
+
+    line-height: 1.55;
+  }
+
+  .checkout-page__content {
+    padding-top: 28px;
+  }
+
+  .checkout-page__grid {
+    gap: 20px;
+  }
+
+  .checkout-page__error {
+    margin-bottom: 16px;
+
+    padding: 13px 15px;
+
+    border-radius: 14px;
+
+    font-size: 0.78rem;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 480px) {
+
+  .checkout-page__header-inner,
+  .checkout-page__content {
+    width: calc(100% - 32px);
+  }
+
+  .checkout-page__header {
+    padding:
+      28px 0 26px;
+  }
+
+  .checkout-page__back {
+    margin-bottom: 19px;
+  }
+
+  .checkout-page__eyebrow {
+    margin-bottom: 9px;
+
+    font-size: 0.65rem;
+  }
+
+  .checkout-page__title {
+    font-size: 2rem;
+  }
+
+  .checkout-page__description {
+    font-size: 0.82rem;
+  }
+
+  .checkout-page__content {
+    padding-top: 22px;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .checkout-page__back {
+    transition: none;
+  }
+
+  .checkout-page__back:hover {
+    transform: none;
+  }
+}

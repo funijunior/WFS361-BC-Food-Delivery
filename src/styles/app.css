@@ -1,0 +1,373 @@
+/* ============================================================
+   BC EATS — BASE APPLICATION STYLES
+   WFS361 Capstone | app.css
+   ------------------------------------------------------------
+   Global resets, typography defaults, container, and shared
+   utility classes. All tokens come from variables.css.
+   Loaded once via index.css. Component CSS files are scoped.
+   ============================================================ */
+
+/* ----------------------------------------------------------
+   MODERN RESET
+   ---------------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* offset for sticky navbar when using anchor jumps */
+  scroll-padding-top: calc(var(--nav-height) + var(--space-5));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  line-height: var(--leading-relaxed);
+  font-weight: var(--weight-regular);
+  color: var(--text-primary);
+  background-color: var(--surface-base);
+  background-image: var(--gradient-surface);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+img,
+picture,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* Remove number input spinners for cleaner UI */
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+/* ----------------------------------------------------------
+   TYPOGRAPHY DEFAULTS
+   ---------------------------------------------------------- */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: var(--text-h1);
+  line-height: var(--leading-tight);
+}
+h2 {
+  font-size: var(--text-h2);
+}
+h3 {
+  font-size: var(--text-h3);
+}
+h4 {
+  font-size: var(--text-body-lg);
+}
+
+p {
+  line-height: var(--leading-relaxed);
+}
+
+.display {
+  font-family: var(--font-display);
+  font-size: var(--text-display);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-brand {
+  color: var(--text-brand);
+}
+.text-accent {
+  color: var(--text-accent);
+}
+
+/* Uppercase tracked label (xs) */
+.eyebrow {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-brand);
+}
+
+/* ----------------------------------------------------------
+   CONTAINER — max 1440px, responsive padding
+   ---------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+}
+
+/* ----------------------------------------------------------
+   GLASS PANEL — reusable glassmorphism surface
+   ---------------------------------------------------------- */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass);
+}
+
+.glass-strong {
+  background: var(--glass-bg-strong);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-glass);
+}
+
+/* ----------------------------------------------------------
+   SHARED UTILITIES
+   ---------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Visible focus ring for keyboard users across interactive elements */
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
+}
+
+/* Selection */
+::selection {
+  background: rgba(31, 138, 112, 0.35);
+  color: var(--color-white);
+}
+
+/* Custom scrollbar — premium touch */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-black);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-gray-600);
+  border-radius: var(--radius-pill);
+  border: 2px solid var(--color-black);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-emerald);
+}
+
+/* ----------------------------------------------------------
+   PAGE LAYOUT HELPERS
+   ---------------------------------------------------------- */
+main {
+  min-height: calc(100vh - var(--nav-height));
+}
+
+.section {
+  padding-block: var(--space-8);
+}
+@media (min-width: 1200px) {
+  .section {
+    padding-block: var(--space-9);
+  }
+}
+
+/* Subtle ambient background glow used behind hero/sections */
+.ambient-glow {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-hero);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================================
+   PHASE 5 — ROUTE LOADING
+   ============================================================ */
+
+.route-loading {
+  min-height: calc(100vh - var(--nav-height));
+  display: grid;
+  place-items: center;
+  padding: var(--space-8);
+}
+
+/* ============================================================
+   PHASE 5 — INTERACTION PERFORMANCE
+   ============================================================ */
+
+button,
+a,
+input,
+select,
+textarea {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/*
+ * Only elements that actually animate should advertise
+ * compositing. Avoiding global will-change improves memory use.
+ */
+.btn,
+.food-card,
+.navbar,
+.page-transition {
+  transform: translateZ(0);
+}
+
+/* ============================================================
+   PHASE 5 — CONTENT VISIBILITY
+   ============================================================ */
+
+.home-page__food {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+.home-page__categories {
+  content-visibility: auto;
+  contain-intrinsic-size: 120px;
+}
+
+/* ============================================================
+   PHASE 5 — ACCESSIBILITY
+   ============================================================ */
+
+button:disabled,
+button[aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+input:disabled,
+select:disabled,
+textarea:disabled {
+  cursor: not-allowed;
+}
+
+/*
+ * Users who explicitly request less motion should receive
+ * essentially static transitions.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   PHASE 5 — IMAGE PERFORMANCE
+   ============================================================ */
+
+img {
+  content-visibility: auto;
+}
+
+img[loading='lazy'] {
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-charcoal),
+      var(--surface-raised)
+    );
+}
+
+/* Avoid layout jumps for media containers */
+.food-card__media img {
+  aspect-ratio: 4 / 3;
+}
+
+/* ============================================================
+   PHASE 5 — MOBILE TOUCH TARGETS
+   ============================================================ */
+
+@media (max-width: 767px) {
+  button,
+  a {
+    touch-action: manipulation;
+  }
+
+  .btn--icon {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}

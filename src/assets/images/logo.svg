@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- BC Eats logo mark — emerald leaf + fork, monochrome via currentColor.
+     Designed to animate (draw + scale). Inherits text color. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+  <defs>
+    <linearGradient id="bc-leaf-grad" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F8A70"/>
+      <stop offset="1" stop-color="#0F3D2E"/>
+    </linearGradient>
+  </defs>
+  <!-- Rounded plate -->
+  <circle cx="24" cy="24" r="22" fill="url(#bc-leaf-grad)"/>
+  <!-- Leaf (campus / fresh) -->
+  <path d="M31 14c-8 0-14 5-14 13 0 3 1 5 3 7-2 2-3 5-3 8"
+        stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <path d="M31 14c0 7-4 12-11 13"
+        stroke="#ffffff" stroke-width="2.4" stroke-linecap="round" fill="none" opacity="0.9"/>
+  <!-- Fork tines (food) -->
+  <path d="M33 26v8M36 26v8M30 26v8M29 26h8v2.5h-8z"
+        stroke="#E8E8E8" stroke-width="2" stroke-linecap="round" fill="none"/>
+</svg>

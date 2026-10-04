@@ -1,0 +1,85 @@
+/* ============================================================
+   BC EATS — FOOD GRID STYLES
+   WFS361 Capstone | foodGrid.css
+   ------------------------------------------------------------
+   Responsive grid that renders FoodCards. Combines the SearchBar
+   query + CategoryFilter selection to filter items live. Shows a
+   results-count header and an EmptyState when nothing matches.
+   Cards stagger in via Framer Motion (orchestrated by the grid's
+   parent variants).
+   ============================================================ */
+
+.food-grid {
+  width: 100%;
+}
+
+/* Header row: results count + active filter summary */
+.food-grid__header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-5);
+  flex-wrap: wrap;
+}
+
+.food-grid__count {
+  font-family: var(--font-accent);
+  font-size: var(--text-small);
+  font-weight: 600;
+  color: var(--text-muted);
+  letter-spacing: 0.02em;
+}
+.food-grid__count strong {
+  color: var(--color-emerald);
+  font-weight: 700;
+}
+
+.food-grid__filter-note {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+}
+.food-grid__filter-note em {
+  font-style: normal;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* The grid itself */
+.food-grid__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-5);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.food-grid__cell {
+  display: flex; /* let the card stretch to equal height */
+  min-width: 0;
+}
+.food-grid__cell > * {
+  width: 100%;
+}
+
+/* Larger cards on wide screens */
+@media (min-width: 1280px) {
+  .food-grid__grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: var(--space-6);
+  }
+}
+
+/* 2 columns on medium, 1 on small */
+@media (max-width: 900px) {
+  .food-grid__grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4);
+  }
+}
+@media (max-width: 560px) {
+  .food-grid__grid {
+    grid-template-columns: 1fr;
+  }
+}

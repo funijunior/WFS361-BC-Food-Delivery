@@ -1,0 +1,12 @@
+/* ============================================================
+   BC EATS — GLOBAL STYLESHEET ENTRY
+   WFS361 Capstone | index.css
+   ------------------------------------------------------------
+   Import order matters:
+     1. variables.css  → design tokens (must load first)
+     2. app.css        → resets, typography, container, utilities
+   Component-specific CSS is imported within each component.
+   ============================================================ */
+
+@import './styles/variables.css';
+@import './styles/app.css';

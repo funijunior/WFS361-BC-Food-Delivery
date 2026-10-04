@@ -1,0 +1,225 @@
+/* ============================================================
+   BC EATS — DESIGN SYSTEM TOKENS
+   WFS361 Capstone | variables.css
+   ------------------------------------------------------------
+   Single source of truth for every visual decision in the app.
+   Every component MUST consume these tokens — no hardcoded values.
+   Approved design system → see docs/DESIGN_SYSTEM.md
+   ============================================================ */
+
+:root {
+  /* ----------------------------------------------------------
+     1. COLOR — PRIMARY (Brand)
+     ---------------------------------------------------------- */
+  --color-forest: #0f3d2e;      /* primary brand / dark surfaces / hero bg */
+  --color-emerald: #1f8a70;     /* CTAs / active states / accents */
+
+  /* COLOR — SECONDARY (Surfaces) */
+  --color-black: #090909;       /* app background base */
+  --color-charcoal: #1b1b1b;    /* cards / elevated surfaces */
+
+  /* COLOR — ACCENT */
+  --color-dark-red: #7b1113;    /* price highlights / delete / badges */
+
+  /* COLOR — NEUTRALS */
+  --color-white: #ffffff;
+  --color-soft-gray: #e8e8e8;
+  --color-gray-400: #9a9a9a;
+  --color-gray-600: #4a4a4a;
+
+  /* COLOR — SEMANTIC SURFACES (derived, for consistent layering) */
+  --surface-base: var(--color-black);
+  --surface-raised: #121212;
+  --surface-card: var(--color-charcoal);
+  --surface-overlay: rgba(15, 61, 46, 0.55);
+
+  /* COLOR — TEXT (on dark surfaces) */
+  --text-primary: var(--color-white);
+  --text-secondary: var(--color-soft-gray);
+  --text-muted: var(--color-gray-400);
+  --text-disabled: var(--color-gray-600);
+  --text-on-emerald: var(--color-white);
+  --text-brand: var(--color-emerald);
+  --text-accent: var(--color-dark-red);
+
+  /* COLOR — BORDERS */
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-emerald: rgba(31, 138, 112, 0.55);
+  --border-red: rgba(123, 17, 19, 0.6);
+
+  /* ----------------------------------------------------------
+     2. GLASSMORPHISM
+     ---------------------------------------------------------- */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: 18px;
+  --glass-blur-strong: 28px;
+
+  /* ----------------------------------------------------------
+     3. GRADIENTS (used sparingly)
+     ---------------------------------------------------------- */
+  --gradient-brand: linear-gradient(135deg, #0f3d2e 0%, #1f8a70 100%);
+  --gradient-hero:
+    radial-gradient(circle at 20% 20%, rgba(31, 138, 112, 0.25), transparent 60%),
+    radial-gradient(circle at 80% 0%, rgba(123, 17, 19, 0.18), transparent 55%);
+  --gradient-accent: linear-gradient(135deg, #1f8a70 0%, #7b1113 100%);
+  --gradient-surface: linear-gradient(180deg, #121212 0%, #090909 100%);
+  --gradient-emerald-glow: radial-gradient(circle, rgba(31,138,112,0.35) 0%, transparent 70%);
+
+  /* ----------------------------------------------------------
+     4. TYPOGRAPHY
+     ---------------------------------------------------------- */
+  --font-display: 'Outfit', 'Poppins', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-accent: 'Poppins', 'Inter', sans-serif;
+
+  /* Fluid type scale (8px rhythm, clamp for responsiveness) */
+  --text-display: clamp(2.75rem, 6vw, 4.5rem);
+  --text-h1: clamp(2rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+  --weight-extrabold: 800;
+
+  /* Line heights */
+  --leading-tight: 1.05;
+  --leading-snug: 1.2;
+  --leading-normal: 1.5;
+  --leading-relaxed: 1.6;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide: 0.08em;
+
+  /* ----------------------------------------------------------
+     5. SPACING (8px system)
+     ---------------------------------------------------------- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 80px;
+  --space-10: 96px;
+
+  /* Container */
+  --container-max: 1440px;
+  --container-pad-desktop: 80px;
+  --container-pad-tablet: 48px;
+  --container-pad-mobile: 20px;
+  --container-pad: var(--container-pad-mobile);
+
+  /* ----------------------------------------------------------
+     6. RADIUS
+     ---------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-button: 16px;
+  --radius-input: 18px;
+  --radius-card: 22px;
+  --radius-glass: 28px;
+  --radius-pill: 999px;
+
+  /* ----------------------------------------------------------
+     7. ELEVATION / SHADOWS (soft, layered)
+     ---------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 48px rgba(0, 0, 0, 0.35);
+  --shadow-xl: 0 24px 70px rgba(0, 0, 0, 0.45);
+  --shadow-glow: 0 0 24px rgba(31, 138, 112, 0.35);
+  --shadow-glow-red: 0 0 20px rgba(123, 17, 19, 0.4);
+  --shadow-card-hover: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(31, 138, 112, 0.18);
+
+  /* ----------------------------------------------------------
+     8. ANIMATION
+     ---------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --dur-fast: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 600ms;
+
+  /* Focus ring */
+  --focus-ring: 0 0 0 3px rgba(31, 138, 112, 0.5);
+
+  /* Z-index scale */
+  --z-base: 1;
+  --z-raised: 10;
+  --z-sticky: 100;
+  --z-nav: 200;
+  --z-cart: 300;
+  --z-modal: 400;
+  --z-toast: 500;
+
+  /* Layout grid defaults */
+  --grid-food-min: 280px;
+  --grid-gap: 24px;
+
+  /* Navbar dimensions */
+  --nav-height: 76px;
+  --nav-height-scrolled: 64px;
+
+    /* ----------------------------------------------------------
+     PHASE 5 — PERFORMANCE / MOTION
+     ---------------------------------------------------------- */
+
+  --motion-distance-sm: 8px;
+  --motion-distance-md: 20px;
+  --motion-distance-lg: 40px;
+
+  --transition-smooth:
+    var(--dur-base) var(--ease-out-expo);
+
+  --transition-fast:
+    var(--dur-fast) var(--ease-standard);
+
+  /* Content sizing */
+  --content-reading-max: 720px;
+
+  /* Touch target */
+  --touch-target-min: 44px;
+}
+
+/* ----------------------------------------------------------
+   RESPONSIVE CONTAINER PADDING
+   ---------------------------------------------------------- */
+@media (min-width: 768px) {
+  :root {
+    --container-pad: var(--container-pad-tablet);
+  }
+}
+@media (min-width: 1200px) {
+  :root {
+    --container-pad: var(--container-pad-desktop);
+  }
+}
+
+/* ----------------------------------------------------------
+   REDUCED MOTION — respect user preference globally
+   ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --dur-fast: 1ms;
+    --dur-base: 1ms;
+    --dur-slow: 1ms;
+  }
+}
+

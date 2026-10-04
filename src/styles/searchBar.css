@@ -1,0 +1,115 @@
+/* ============================================================
+   BC EATS — SEARCH BAR STYLES
+   WFS361 Capstone | searchBar.css
+   ------------------------------------------------------------
+   Reusable search input used in the menu section (and reusable
+   elsewhere). Glass surface, animated glow on focus, clear
+   button, optional inline submit button.
+   ============================================================ */
+
+.searchbar {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  gap: var(--space-3);
+  width: 100%;
+}
+
+.searchbar__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  flex: 1;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-input);
+  background: var(--glass-bg);
+  border: 1px solid var(--border-subtle);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  transition:
+    border-color var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    background-color var(--dur-base) var(--ease-out-expo);
+}
+
+/* Animated search glow on focus */
+.searchbar__field:focus-within {
+  border-color: var(--border-emerald);
+  background: var(--glass-bg-strong);
+  box-shadow: 0 0 0 3px rgba(31, 138, 112, 0.18), 0 0 28px rgba(31, 138, 112, 0.22);
+}
+
+.searchbar__icon {
+  width: 22px;
+  height: 22px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: color var(--dur-base) var(--ease-out-expo);
+}
+.searchbar__field:focus-within .searchbar__icon {
+  color: var(--color-emerald);
+}
+
+.searchbar__input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-size: var(--text-body);
+  font-family: var(--font-body);
+  padding: 4px 0;
+}
+.searchbar__input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Clear button */
+.searchbar__clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-base) var(--ease-out-expo),
+    color var(--dur-base) var(--ease-out-expo),
+    background-color var(--dur-base) var(--ease-out-expo);
+}
+.searchbar__clear--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+.searchbar__clear:hover {
+  color: var(--color-white);
+  background: rgba(123, 17, 19, 0.5);
+}
+.searchbar__clear svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Optional inline submit button */
+.searchbar__submit {
+  flex-shrink: 0;
+}
+
+/* Sizing variants */
+.searchbar--lg .searchbar__field {
+  padding: var(--space-4) var(--space-5);
+}
+.searchbar--lg .searchbar__input {
+  font-size: var(--text-body-lg);
+}
+
+/* Disabled state */
+.searchbar--disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}

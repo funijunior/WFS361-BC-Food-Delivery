@@ -1,0 +1,318 @@
+/* ============================================================
+   BC EATS — FOOD CARD STYLES
+   WFS361 Capstone | foodCard.css
+   ------------------------------------------------------------
+   Premium glass food card. Cinematic image with gradient overlay,
+   rating + delivery-time chips, name, description, price, and an
+   "Add to cart" CTA wired to CartContext. Hover lifts the card
+   with a soft glow; the image subtly zooms. Fully responsive.
+   ============================================================ */
+
+.food-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border-radius: var(--radius-card);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  overflow: hidden;
+  transition:
+    transform var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-expo);
+  will-change: transform;
+}
+
+.food-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(31, 138, 112, 0.35);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.food-card:focus-within {
+  border-color: var(--border-emerald);
+  box-shadow: 0 0 0 3px rgba(31, 138, 112, 0.18);
+}
+
+/* ---------- Image ---------- */
+.food-card__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  background: var(--color-charcoal);
+}
+
+.food-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform var(--dur-slow) var(--ease-out-expo);
+  will-change: transform;
+}
+.food-card:hover .food-card__img {
+  transform: scale(1.06);
+}
+
+/* Gradient overlay for legibility of chips */
+.food-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(9, 9, 9, 0.55) 0%,
+    rgba(9, 9, 9, 0.1) 45%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* Popular badge */
+.food-card__badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 11px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-accent);
+  color: var(--color-white);
+  font-family: var(--font-accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: var(--shadow-glow-red);
+}
+
+/* ---------- Body ---------- */
+.food-card__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: var(--space-4) var(--space-4) var(--space-5);
+  gap: var(--space-2);
+}
+
+/* Meta row: rating + delivery time */
+.food-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-1);
+}
+
+.food-card__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-border);
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.food-card__chip svg {
+  width: 13px;
+  height: 13px;
+}
+.food-card__chip--rating {
+  color: #f5c518; /* star gold */
+}
+.food-card__chip--rating svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+/* Name + description */
+.food-card__name {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin: 0;
+}
+
+.food-card__desc {
+  font-size: var(--text-small);
+  color: var(--text-muted);
+  line-height: 1.55;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ---------- Footer: price + CTA ---------- */
+.food-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+.food-card__price {
+  font-family: var(--font-display);
+  font-size: var(--text-h4);
+  font-weight: 800;
+  color: var(--color-emerald);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Add-to-cart button (uses shared Button, but sized for card) */
+.food-card__cta {
+  flex-shrink: 0;
+}
+
+/* Quantity stepper shown when item already in cart */
+.food-card__stepper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg-strong);
+  border: 1px solid var(--border-emerald);
+}
+.food-card__stepper-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: var(--gradient-brand);
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  transition: transform var(--dur-fast) var(--ease-out-expo),
+    box-shadow var(--dur-fast) var(--ease-out-expo);
+}
+.food-card__stepper-btn:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-glow);
+}
+.food-card__stepper-btn:active {
+  transform: scale(0.95);
+}
+.food-card__stepper-btn svg {
+  width: 15px;
+  height: 15px;
+}
+.food-card__stepper-qty {
+  min-width: 22px;
+  text-align: center;
+  font-family: var(--font-accent);
+  font-weight: 700;
+  font-size: var(--text-body);
+  color: var(--text-primary);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .food-card,
+  .food-card__img,
+  .food-card__stepper-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+  .food-card:hover {
+    transform: none;
+  }
+  .food-card:hover .food-card__img {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   PHASE 5 — FOOD CARD POLISH
+   ============================================================ */
+
+.food-card {
+  will-change: transform;
+  overflow: hidden;
+  transition:
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-expo);
+}
+
+.food-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--border-emerald);
+}
+
+.food-card__media {
+  overflow: hidden;
+}
+
+.food-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  transition:
+    transform 600ms var(--ease-out-expo),
+    filter 300ms var(--ease-out-expo);
+}
+
+.food-card:hover .food-card__img {
+  transform: scale(1.045);
+}
+
+.food-card:hover .food-card__badge {
+  box-shadow: var(--shadow-glow);
+}
+
+/* Stepper controls */
+.food-card__stepper-btn {
+  transition:
+    transform var(--dur-fast) var(--ease-spring),
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.food-card__stepper-btn:hover {
+  transform: scale(1.08);
+  background: var(--glass-bg-strong);
+  border-color: var(--border-emerald);
+}
+
+.food-card__stepper-btn:active {
+  transform: scale(0.94);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .food-card,
+  .food-card__img,
+  .food-card__stepper-btn {
+    transition: none !important;
+  }
+
+  .food-card:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  .food-card:hover .food-card__img {
+    transform: none;
+  }
+
+  .food-card:hover .food-card__stepper-btn {
+    transform: none;
+  }
+}

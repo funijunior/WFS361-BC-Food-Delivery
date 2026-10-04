@@ -1,0 +1,273 @@
+/* ============================================================
+   BC EATS — EMPTY STATE
+   WFS361 CAPSTONE
+   ============================================================ */
+
+.empty-state {
+  width: 100%;
+  min-height: 320px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 48px 32px;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  border-radius: 28px;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(31, 138, 112, 0.10),
+      transparent 42%
+    ),
+    rgba(255, 255, 255, 0.035);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.10);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.24);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  overflow: hidden;
+
+  isolation: isolate;
+}
+
+
+/* ============================================================
+   ICON
+   ============================================================ */
+
+.empty-state__icon-wrap {
+  position: relative;
+
+  width: 82px;
+  height: 82px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex: 0 0 auto;
+
+  margin-bottom: 24px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(31, 138, 112, 0.20),
+      rgba(31, 138, 112, 0.07) 55%,
+      transparent 72%
+    );
+
+  border:
+    1px solid rgba(31, 138, 112, 0.25);
+
+  box-shadow:
+    0 0 35px rgba(31, 138, 112, 0.14),
+    inset 0 0 24px rgba(31, 138, 112, 0.08);
+}
+
+
+/* Outer glow */
+
+.empty-state__icon-wrap::before {
+  content: '';
+
+  position: absolute;
+  inset: -12px;
+
+  border-radius: 50%;
+
+  border:
+    1px solid rgba(31, 138, 112, 0.08);
+
+  pointer-events: none;
+}
+
+
+/* Icon */
+
+.empty-state__icon {
+  position: relative;
+
+  z-index: 1;
+
+  width: 30px;
+  height: 30px;
+
+  display: block;
+
+  color: var(--color-emerald);
+
+  stroke: currentColor;
+
+  stroke-width: 2;
+
+  filter:
+    drop-shadow(
+      0 0 10px rgba(31, 138, 112, 0.30)
+    );
+}
+
+
+/* ============================================================
+   CONTENT
+   ============================================================ */
+
+.empty-state__content {
+  width: min(100%, 480px);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+
+.empty-state__title {
+  margin: 0;
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(1.35rem, 2vw, 1.65rem);
+
+  font-weight: 700;
+
+  line-height: 1.15;
+
+  letter-spacing: -0.025em;
+
+  color: var(--color-white);
+}
+
+
+/* ============================================================
+   MESSAGE
+   ============================================================ */
+
+.empty-state__message {
+  max-width: 430px;
+
+  margin: 10px auto 0;
+
+  color: #929995;
+
+  font-family: var(--font-body);
+
+  font-size: 0.9rem;
+
+  font-weight: 400;
+
+  line-height: 1.6;
+}
+
+
+/* ============================================================
+   ACTION
+   ============================================================ */
+
+.empty-state__action {
+  margin-top: 24px;
+}
+
+
+/* ============================================================
+   HOVER
+   ============================================================ */
+
+.empty-state:hover .empty-state__icon-wrap {
+  box-shadow:
+    0 0 42px rgba(31, 138, 112, 0.18),
+    inset 0 0 24px rgba(31, 138, 112, 0.10);
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 767px) {
+  .empty-state {
+    min-height: 280px;
+
+    padding:
+      40px 20px;
+
+    border-radius: 22px;
+  }
+
+  .empty-state__icon-wrap {
+    width: 72px;
+    height: 72px;
+
+    margin-bottom: 20px;
+  }
+
+  .empty-state__icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .empty-state__title {
+    font-size: 1.3rem;
+  }
+
+  .empty-state__message {
+    font-size: 0.84rem;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+  .empty-state {
+    min-height: 250px;
+
+    padding:
+      32px 16px;
+  }
+
+  .empty-state__icon-wrap {
+    width: 64px;
+    height: 64px;
+  }
+
+  .empty-state__icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .empty-state {
+    animation: none;
+  }
+
+  .empty-state__icon-wrap {
+    transition: none;
+  }
+}

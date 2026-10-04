@@ -1,0 +1,231 @@
+/* ============================================================
+   BC EATS — NAVBAR STYLES
+   WFS361 Capstone | navbar.css
+   ------------------------------------------------------------
+   Sticky, floating glass navigation.
+   - Transparent on top of hero, solid glass while scrolling.
+   - Animated logo (draw + scale on mount, hover lift).
+   - Responsive hamburger menu < 900px.
+   - Cart badge wired to CartContext.
+   ============================================================ */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-nav);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  transition:
+    background-color var(--dur-base) var(--ease-out-expo),
+    backdrop-filter var(--dur-base) var(--ease-out-expo),
+    box-shadow var(--dur-base) var(--ease-out-expo),
+    height var(--dur-base) var(--ease-out-expo),
+    border-color var(--dur-base) var(--ease-out-expo);
+  border-bottom: 1px solid transparent;
+}
+
+/* Transparent state (at top) */
+.navbar--top {
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+/* Scrolled / solid state */
+.navbar--scrolled {
+  height: var(--nav-height-scrolled);
+  background: rgba(9, 9, 9, 0.72);
+  backdrop-filter: blur(var(--glass-blur-strong));
+  -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+  border-bottom: 1px solid var(--glass-border);
+  box-shadow: var(--shadow-md);
+}
+
+.navbar__inner {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--container-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-5);
+}
+
+/* ---------- Logo ---------- */
+.navbar__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  text-decoration: none;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+.navbar__logo-mark {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform var(--dur-base) var(--ease-spring);
+}
+.navbar__logo-mark-img {
+  width: 38px;
+  height: 38px;
+  display: block;
+}
+.navbar__logo:hover .navbar__logo-mark {
+  transform: scale(1.08) rotate(-4deg);
+}
+.navbar__logo-text {
+  font-family: var(--font-display);
+  font-weight: var(--weight-bold);
+  font-size: 1.35rem;
+  letter-spacing: var(--tracking-tight);
+  line-height: 1;
+  display: flex;
+  flex-direction: column;
+}
+.navbar__logo-text span {
+  font-size: var(--text-xs);
+  font-weight: var(--weight-medium);
+  color: var(--text-brand);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ---------- Nav links (desktop) ---------- */
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+.navbar__link {
+  position: relative;
+  padding: 10px 16px;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-secondary);
+  border-radius: var(--radius-button);
+  transition: color var(--dur-base) var(--ease-out-expo),
+    background-color var(--dur-base) var(--ease-out-expo);
+}
+.navbar__link::after {
+  /* Animated underline */
+  content: '';
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--color-emerald);
+  border-radius: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-base) var(--ease-out-expo);
+}
+.navbar__link:hover {
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.04);
+}
+.navbar__link:hover::after,
+.navbar__link--active::after {
+  transform: scaleX(1);
+}
+.navbar__link--active {
+  color: var(--text-primary);
+}
+
+/* ---------- Actions (right) ---------- */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* Hamburger — hidden on desktop */
+.navbar__burger {
+  display: none;
+}
+
+/* ---------- Mobile panel ---------- */
+.navbar__mobile {
+  display: none;
+}
+
+/* ============================================================
+   RESPONSIVE — < 900px show hamburger + mobile panel
+   ============================================================ */
+@media (max-width: 900px) {
+  .navbar__links {
+    display: none;
+  }
+  .navbar__burger {
+    display: inline-flex;
+  }
+  .navbar__cta-desktop {
+    display: none;
+  }
+
+  /* Mobile slide-down panel */
+  .navbar__mobile {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    z-index: var(--z-nav);
+    background: rgba(9, 9, 9, 0.96);
+    backdrop-filter: blur(var(--glass-blur-strong));
+    -webkit-backdrop-filter: blur(var(--glass-blur-strong));
+    border-bottom: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-5) var(--container-pad) var(--space-7);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    transform-origin: top;
+  }
+  .navbar__mobile--open {
+    display: flex;
+  }
+  .navbar__mobile-link {
+    display: block;
+    padding: var(--space-4) var(--space-4);
+    font-size: var(--text-body-lg);
+    font-weight: var(--weight-medium);
+    color: var(--text-secondary);
+    border-radius: var(--radius-button);
+    transition: background-color var(--dur-base) var(--ease-out-expo),
+      color var(--dur-base) var(--ease-out-expo);
+  }
+  .navbar__mobile-link:hover,
+  .navbar__mobile-link--active {
+    background: rgba(31, 138, 112, 0.12);
+    color: var(--text-primary);
+  }
+  .navbar__mobile-cta {
+    margin-top: var(--space-3);
+  }
+}
+
+/* Backdrop for mobile menu */
+.navbar__backdrop {
+  display: none;
+}
+@media (max-width: 900px) {
+  .navbar__backdrop--visible {
+    display: block;
+    position: fixed;
+    inset: 0;
+    top: var(--nav-height);
+    background: rgba(0, 0, 0, 0.5);
+    z-index: calc(var(--z-nav) - 1);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+}

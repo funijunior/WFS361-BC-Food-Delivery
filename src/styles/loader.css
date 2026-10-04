@@ -1,0 +1,388 @@
+/* ============================================================
+   BC EATS — LOADER SYSTEM
+   WFS361 CAPSTONE
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   BASE LOADER
+------------------------------------------------------------ */
+
+.loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: var(--space-3);
+
+  color: var(--color-emerald);
+}
+
+.loader__spinner {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+}
+
+/* ------------------------------------------------------------
+   SPINNER RINGS
+------------------------------------------------------------ */
+
+.loader__spinner::before {
+  content: '';
+
+  position: absolute;
+  inset: 1px;
+
+  border-radius: 50%;
+
+  border: 2px solid
+    rgba(31, 138, 112, 0.16);
+
+  border-top-color: var(--color-emerald);
+
+  animation:
+    loader-spin 0.85s linear infinite;
+}
+
+.loader__spinner::after {
+  content: '';
+
+  position: absolute;
+
+  width: 9px;
+  height: 9px;
+
+  border-radius: 50%;
+
+  background: var(--color-emerald);
+
+  box-shadow:
+    0 0 14px rgba(31, 138, 112, 0.55);
+
+  animation:
+    loader-pulse 1.1s ease-in-out infinite;
+}
+
+.loader__spinner span {
+  display: none;
+}
+
+/* ------------------------------------------------------------
+   LABEL
+------------------------------------------------------------ */
+
+.loader__label {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+
+  color: var(--text-muted);
+}
+
+/* ------------------------------------------------------------
+   SIZES
+------------------------------------------------------------ */
+
+.loader--sm .loader__spinner {
+  width: 20px;
+  height: 20px;
+}
+
+.loader--sm .loader__spinner::before {
+  border-width: 1.5px;
+}
+
+.loader--sm .loader__spinner::after {
+  width: 6px;
+  height: 6px;
+}
+
+.loader--sm .loader__label {
+  font-size: var(--text-xs);
+}
+
+.loader--md .loader__spinner {
+  width: 32px;
+  height: 32px;
+}
+
+.loader--lg .loader__spinner {
+  width: 46px;
+  height: 46px;
+}
+
+.loader--lg .loader__spinner::before {
+  border-width: 3px;
+}
+
+.loader--lg .loader__spinner::after {
+  width: 11px;
+  height: 11px;
+}
+
+.loader--lg .loader__label {
+  font-size: var(--text-body);
+}
+
+/* ------------------------------------------------------------
+   INLINE
+------------------------------------------------------------ */
+
+.loader--inline {
+  width: 100%;
+
+  padding: var(--space-4);
+}
+
+/* ------------------------------------------------------------
+   PAGE LOADER
+------------------------------------------------------------ */
+
+.loader-page {
+  min-height: 60vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: var(--space-8);
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(31, 138, 112, 0.08),
+      transparent 45%
+    ),
+    var(--color-black);
+}
+
+.loader--page {
+  flex-direction: column;
+}
+
+.loader--page .loader__label {
+  margin-top: var(--space-1);
+}
+
+/* ------------------------------------------------------------
+   SKELETON GRID
+------------------------------------------------------------ */
+
+.loader-skeleton {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(280px, 1fr)
+    );
+
+  gap: var(--space-5);
+
+  width: 100%;
+}
+
+.loader-skeleton--sm {
+  grid-template-columns:
+    repeat(
+      auto-fill,
+      minmax(220px, 1fr)
+    );
+}
+
+/* ------------------------------------------------------------
+   SKELETON CARD
+------------------------------------------------------------ */
+
+.loader-skeleton__card {
+  overflow: hidden;
+
+  border-radius: var(--radius-card);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.02)
+    );
+
+  border: 1px solid var(--glass-border);
+}
+
+/* ------------------------------------------------------------
+   SHIMMER
+------------------------------------------------------------ */
+
+.loader-skeleton__image,
+.loader-skeleton__line,
+.loader-skeleton__button {
+  position: relative;
+
+  overflow: hidden;
+
+  background:
+    rgba(255, 255, 255, 0.06);
+}
+
+.loader-skeleton__image::after,
+.loader-skeleton__line::after,
+.loader-skeleton__button::after {
+  content: '';
+
+  position: absolute;
+
+  inset: 0;
+
+  transform: translateX(-100%);
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.09) 45%,
+      rgba(31, 138, 112, 0.12) 50%,
+      rgba(255, 255, 255, 0.09) 55%,
+      transparent 100%
+    );
+
+  animation:
+    skeleton-shimmer 1.6s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------
+   IMAGE
+------------------------------------------------------------ */
+
+.loader-skeleton__image {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+}
+
+/* ------------------------------------------------------------
+   CONTENT
+------------------------------------------------------------ */
+
+.loader-skeleton__content {
+  display: flex;
+  flex-direction: column;
+
+  gap: var(--space-3);
+
+  padding: var(--space-4);
+}
+
+.loader-skeleton__line {
+  height: 12px;
+
+  border-radius: var(--radius-pill);
+}
+
+.loader-skeleton__line--title {
+  width: 72%;
+
+  height: 17px;
+}
+
+.loader-skeleton__line--short {
+  width: 48%;
+}
+
+.loader-skeleton__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: var(--space-3);
+
+  margin-top: var(--space-2);
+}
+
+.loader-skeleton__line--price {
+  width: 25%;
+
+  height: 16px;
+}
+
+.loader-skeleton__button {
+  width: 82px;
+  height: 36px;
+
+  border-radius: var(--radius-button);
+}
+
+/* ------------------------------------------------------------
+   ANIMATIONS
+------------------------------------------------------------ */
+
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-pulse {
+  0%,
+  100% {
+    transform: scale(0.75);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes skeleton-shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* ------------------------------------------------------------
+   TABLET
+------------------------------------------------------------ */
+
+@media (max-width: 767px) {
+  .loader-skeleton {
+    grid-template-columns:
+      repeat(
+        auto-fill,
+        minmax(240px, 1fr)
+      );
+
+    gap: var(--space-4);
+  }
+}
+
+/* ------------------------------------------------------------
+   MOBILE
+------------------------------------------------------------ */
+
+@media (max-width: 480px) {
+  .loader-skeleton {
+    grid-template-columns: 1fr;
+  }
+
+  .loader-page {
+    min-height: 50vh;
+  }
+}
+
+/* ------------------------------------------------------------
+   REDUCED MOTION
+------------------------------------------------------------ */
+
+@media (prefers-reduced-motion: reduce) {
+  .loader__spinner::before,
+  .loader__spinner::after,
+  .loader-skeleton__image::after,
+  .loader-skeleton__line::after,
+  .loader-skeleton__button::after {
+    animation: none;
+  }
+}

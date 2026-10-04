@@ -1,0 +1,22 @@
+/* ============================================================
+   BC EATS — PAGE TRANSITIONS
+   WFS361 Capstone | Phase 5
+   ============================================================ */
+
+.page-transition {
+  width: 100%;
+  min-height: 100%;
+  will-change: opacity, transform;
+}
+
+/* Prevent accidental horizontal overflow during transitions */
+.page-transition > * {
+  min-width: 0;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    will-change: opacity;
+  }
+}

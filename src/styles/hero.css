@@ -1,0 +1,1046 @@
+/* ============================================================
+   BC EATS — HERO
+   WFS361 Capstone
+   ============================================================ */
+
+.hero {
+  position: relative;
+  min-height: 820px;
+  height: min(900px, 100vh);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding-top: calc(var(--nav-height) + 32px);
+  padding-bottom: 48px;
+
+  overflow: hidden;
+  isolation: isolate;
+
+  background: var(--color-black);
+}
+
+
+/* ============================================================
+   BACKGROUND
+   ============================================================ */
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.hero__bg-image {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  opacity: 0.32;
+}
+
+.hero__bg-gradient {
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(
+      circle at 18% 25%,
+      rgba(31, 138, 112, 0.30),
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 86% 20%,
+      rgba(123, 17, 19, 0.22),
+      transparent 45%
+    ),
+    linear-gradient(
+      90deg,
+      rgba(9, 9, 9, 0.42) 0%,
+      rgba(9, 9, 9, 0.16) 48%,
+      rgba(9, 9, 9, 0.38) 100%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(9, 9, 9, 0.12) 0%,
+      rgba(9, 9, 9, 0.48) 70%,
+      #090909 100%
+    );
+}
+
+
+/* ============================================================
+   AMBIENT ORBS
+   ============================================================ */
+
+.hero__orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  pointer-events: none;
+}
+
+.hero__orb--emerald {
+  width: 420px;
+  height: 420px;
+
+  top: 5%;
+  left: -180px;
+
+  background: rgba(31, 138, 112, 0.28);
+}
+
+.hero__orb--red {
+  width: 380px;
+  height: 380px;
+
+  right: -150px;
+  bottom: 4%;
+
+  background: rgba(123, 17, 19, 0.24);
+}
+
+
+/* ============================================================
+   MAIN LAYOUT
+   ============================================================ */
+
+.hero__inner {
+  position: relative;
+  z-index: 2;
+
+  width: min(100% - 80px, 1440px);
+  margin-inline: auto;
+
+  display: grid;
+  grid-template-columns:
+    minmax(420px, 0.88fr)
+    minmax(440px, 1.12fr);
+
+  align-items: center;
+
+  gap: clamp(40px, 5vw, 88px);
+}
+
+
+/* ============================================================
+   LEFT CONTENT
+   ============================================================ */
+
+.hero__content {
+  width: 100%;
+  max-width: 540px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}
+
+
+/* ---------- Eyebrow ---------- */
+
+.hero__eyebrow {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 8px;
+
+  width: fit-content;
+
+  padding: 7px 14px;
+
+  border: 1px solid rgba(31, 138, 112, 0.5);
+  border-radius: 999px;
+
+  background: rgba(31, 138, 112, 0.11);
+
+  color: var(--color-emerald);
+
+  font-size: 0.75rem;
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+
+  flex: 0 0 auto;
+
+  border-radius: 50%;
+
+  background: var(--color-emerald);
+
+  box-shadow:
+    0 0 8px rgba(31, 138, 112, 0.8);
+
+  animation:
+    hero-pulse 2s ease-in-out infinite;
+}
+
+@keyframes hero-pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.55;
+    transform: scale(0.8);
+  }
+}
+
+
+/* ============================================================
+   TITLE
+   ============================================================ */
+
+.hero__title {
+  margin: 0;
+
+  max-width: 520px;
+
+  font-family: var(--font-display);
+
+  font-size:
+    clamp(3.4rem, 4.5vw, 5.1rem);
+
+  font-weight: 700;
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+
+  color: var(--color-white);
+}
+
+.hero__title-accent {
+  display: inline-block;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1f8a70 0%,
+      #28735f 42%,
+      #7b1113 100%
+    );
+
+  background-clip: text;
+  -webkit-background-clip: text;
+
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ============================================================
+   SUBTITLE
+   ============================================================ */
+
+.hero__subtitle {
+  margin: 0;
+
+  max-width: 500px;
+
+  font-size: 1.05rem;
+  line-height: 1.65;
+
+  color: rgba(232, 232, 232, 0.82);
+}
+
+
+/* ============================================================
+   SEARCH GLASS PANEL
+   ============================================================ */
+
+.hero__panel {
+  width: 100%;
+  max-width: 500px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 12px;
+
+  padding: 20px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 26px;
+
+  background:
+    rgba(255, 255, 255, 0.065);
+
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.30);
+}
+
+
+/* ============================================================
+   SEARCH
+   ============================================================ */
+
+.hero__search {
+  position: relative;
+
+  min-height: 54px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding-inline: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 17px;
+
+  background: rgba(5, 12, 10, 0.74);
+
+  transition:
+    border-color 250ms ease,
+    box-shadow 250ms ease;
+}
+
+.hero__search:focus-within {
+  border-color: rgba(31, 138, 112, 0.8);
+
+  box-shadow:
+    0 0 0 3px rgba(31, 138, 112, 0.13),
+    0 0 26px rgba(31, 138, 112, 0.16);
+}
+
+.hero__search-icon {
+  width: 21px;
+  height: 21px;
+
+  flex: 0 0 auto;
+
+  color: #9a9a9a;
+}
+
+.hero__search:focus-within
+.hero__search-icon {
+  color: var(--color-emerald);
+}
+
+.hero__search-input {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  background: transparent;
+
+  color: white;
+
+  font: inherit;
+
+  font-size: 0.95rem;
+}
+
+.hero__search-input::placeholder {
+  color: #8d8d8d;
+}
+
+
+/* ============================================================
+   PANEL BOTTOM ROW
+   ============================================================ */
+
+.hero__panel-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    150px;
+
+  gap: 12px;
+}
+
+
+/* ============================================================
+   DELIVERY SELECT
+   ============================================================ */
+
+.hero__select {
+  position: relative;
+
+  min-height: 52px;
+
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  padding-inline: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 17px;
+
+  background: rgba(5, 12, 10, 0.74);
+}
+
+.hero__select:focus-within {
+  border-color: rgba(31, 138, 112, 0.8);
+}
+
+.hero__select-icon {
+  width: 19px;
+  height: 19px;
+
+  flex: 0 0 auto;
+
+  color: var(--color-emerald);
+}
+
+.hero__select-native {
+  width: 100%;
+
+  border: 0;
+  outline: 0;
+
+  padding-right: 24px;
+
+  appearance: none;
+  -webkit-appearance: none;
+
+  background: transparent;
+
+  color: white;
+
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+
+  cursor: pointer;
+}
+
+.hero__select-native option {
+  background: #1b1b1b;
+  color: white;
+}
+
+.hero__select-caret {
+  position: absolute;
+
+  right: 14px;
+
+  width: 12px;
+  height: 12px;
+
+  color: #9a9a9a;
+
+  pointer-events: none;
+}
+
+
+/* ============================================================
+   POPULAR CATEGORIES
+   ============================================================ */
+
+.hero__categories {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  gap: 10px;
+
+  max-width: 520px;
+
+  margin-top: 2px;
+}
+
+.hero__cat-label {
+  margin-right: 4px;
+
+  color: #888;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero__cat {
+  min-height: 38px;
+
+  display: inline-flex;
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 8px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.13);
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  color: #d4d4d4;
+
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 150ms ease,
+    background 250ms ease,
+    border-color 250ms ease;
+}
+
+.hero__cat:hover {
+  transform: translateY(-2px);
+
+  background:
+    rgba(31, 138, 112, 0.14);
+
+  border-color:
+    rgba(31, 138, 112, 0.65);
+
+  color: white;
+}
+
+.hero__cat-icon {
+  width: 16px;
+  height: 16px;
+
+  color: var(--color-emerald);
+}
+
+
+/* ============================================================
+   RIGHT FOOD COMPOSITION
+   ============================================================ */
+
+.hero__visual {
+  position: relative;
+
+  width: 100%;
+  height: 500px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Main decorative circle */
+
+.hero__plate img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center;
+
+  border-radius: 50%;
+
+  background: transparent;
+
+  border: none;
+  outline: none;
+
+  filter:
+    drop-shadow(0 24px 30px rgba(0, 0, 0, 0.55));
+}
+
+/* ============================================================
+   IMPORTANT — REMOVE SQUARE IMAGE APPEARANCE
+   ============================================================ */
+
+.hero__plate img {
+  display: block;
+
+  width: auto;
+  height: auto;
+
+  max-width: 100%;
+  max-height: 100%;
+
+  object-fit: contain;
+
+  background: transparent;
+
+  border: 0;
+  outline: 0;
+
+  filter:
+    drop-shadow(
+      0 28px 30px rgba(0, 0, 0, 0.58)
+    );
+}
+
+
+/* ============================================================
+   MAIN BURGER
+   ============================================================ */
+
+.hero__plate--main {
+  position: relative;
+
+  width: 365px;
+  height: 365px;
+
+  z-index: 4;
+}
+
+.hero__plate--main img {
+  width: auto;
+  height: auto;
+
+  max-width: 330px;
+  max-height: 330px;
+}
+
+
+/* ============================================================
+   FLOATING FOOD
+   ============================================================ */
+
+.hero__plate--float {
+  width: 112px;
+  height: 112px;
+
+  z-index: 3;
+
+  background:
+    rgba(9, 9, 9, 0.22);
+
+  backdrop-filter: blur(6px);
+}
+
+.hero__plate--float img {
+  width: auto;
+  height: auto;
+
+  max-width: 92px;
+  max-height: 92px;
+}
+
+
+/* Pizza */
+
+.hero__plate--float-1 {
+  top: 4%;
+  right: 8%;
+}
+
+
+/* Drink */
+
+.hero__plate--float-2 {
+  bottom: 6%;
+  left: 7%;
+}
+
+
+/* Fries */
+
+.hero__plate--float-3 {
+  width: 92px;
+  height: 92px;
+
+  right: 7%;
+  bottom: 1%;
+}
+
+.hero__plate--float-3 img {
+  width: auto;
+  height: auto;
+
+  max-width: 72px;
+  max-height: 72px;
+}
+
+
+/* ============================================================
+   FLOAT ANIMATION
+   ============================================================ */
+
+.hero__float {
+  animation:
+    hero-float 5.5s ease-in-out infinite;
+}
+
+.hero__float--delay-1 {
+  animation-delay: -1.8s;
+}
+
+.hero__float--delay-2 {
+  animation-delay: -3.6s;
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+
+/* ============================================================
+   STATS
+   ============================================================ */
+
+.hero__stats {
+  position: absolute;
+
+  z-index: 5;
+
+  right: 40px;
+  bottom: 70px;
+
+  width: min(760px, 46vw);
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.hero__stat {
+  min-height: 96px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 18px 20px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.13);
+
+  border-radius: 20px;
+
+  background:
+    rgba(255, 255, 255, 0.065);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  transition:
+    transform 250ms ease,
+    border-color 250ms ease;
+}
+
+.hero__stat:hover {
+  transform: translateY(-3px);
+
+  border-color:
+    rgba(31, 138, 112, 0.55);
+}
+
+.hero__stat-value {
+  font-family: var(--font-display);
+
+  font-size: 1.45rem;
+  font-weight: 700;
+
+  line-height: 1;
+
+  color: white;
+}
+
+.hero__stat-value-accent {
+  color: var(--color-emerald);
+}
+
+.hero__stat-label {
+  margin-top: 9px;
+
+  color: #9a9a9a;
+
+  font-size: 0.8rem;
+}
+
+
+/* ============================================================
+   LAPTOP
+   ============================================================ */
+
+@media (max-width: 1280px) {
+
+  .hero {
+    min-height: 760px;
+  }
+
+  .hero__inner {
+    width: min(100% - 64px, 1200px);
+
+    grid-template-columns:
+      minmax(380px, 0.95fr)
+      minmax(380px, 1.05fr);
+
+    gap: 40px;
+  }
+
+  .hero__title {
+    font-size:
+      clamp(3.1rem, 5vw, 4.5rem);
+  }
+
+  .hero__visual {
+    height: 440px;
+  }
+
+  .hero__plate--main {
+    width: 320px;
+    height: 320px;
+  }
+
+  .hero__plate--main img {
+    max-width: 290px;
+    max-height: 290px;
+  }
+
+  .hero__stats {
+    right: 32px;
+    bottom: 45px;
+
+    width: min(680px, 48vw);
+  }
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 1024px) {
+
+  .hero {
+    height: auto;
+    min-height: auto;
+
+    padding-top:
+      calc(var(--nav-height) + 48px);
+
+    padding-bottom: 64px;
+  }
+
+  .hero__inner {
+    width: min(100% - 48px, 900px);
+
+    grid-template-columns: 1fr;
+
+    gap: 36px;
+  }
+
+  .hero__content {
+    max-width: 650px;
+  }
+
+  .hero__visual {
+    height: 400px;
+  }
+
+  .hero__plate--main {
+    width: 300px;
+    height: 300px;
+  }
+
+  .hero__plate--main img {
+    max-width: 270px;
+    max-height: 270px;
+  }
+
+  .hero__stats {
+    position: relative;
+
+    inset: auto;
+
+    width: min(100% - 48px, 900px);
+
+    margin:
+      48px auto 0;
+
+    grid-template-columns:
+      repeat(4, minmax(0, 1fr));
+  }
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .hero {
+    padding-top:
+      calc(var(--nav-height) + 32px);
+
+    padding-bottom: 48px;
+  }
+
+  .hero__inner {
+    width: calc(100% - 40px);
+
+    gap: 28px;
+  }
+
+  .hero__content {
+    gap: 20px;
+  }
+
+  .hero__title {
+    font-size:
+      clamp(2.8rem, 14vw, 4rem);
+  }
+
+  .hero__subtitle {
+    font-size: 0.95rem;
+  }
+
+  .hero__panel {
+    padding: 14px;
+
+    border-radius: 22px;
+  }
+
+  .hero__panel-row {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__panel-row .btn {
+    width: 100%;
+  }
+
+  .hero__categories {
+    gap: 8px;
+  }
+
+  .hero__cat {
+    padding: 7px 11px;
+
+    font-size: 0.75rem;
+  }
+
+  .hero__visual {
+    height: 320px;
+  }
+
+  .hero__plate--main {
+    width: 235px;
+    height: 235px;
+  }
+
+  .hero__plate--main img {
+    max-width: 215px;
+    max-height: 215px;
+  }
+
+  .hero__plate--float {
+    width: 78px;
+    height: 78px;
+  }
+
+  .hero__plate--float img {
+    max-width: 62px;
+    max-height: 62px;
+  }
+
+  .hero__plate--float-3 {
+    width: 68px;
+    height: 68px;
+  }
+
+  .hero__plate--float-3 img {
+    max-width: 52px;
+    max-height: 52px;
+  }
+
+  .hero__stats {
+    width: calc(100% - 40px);
+
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 36px;
+  }
+
+  .hero__stat {
+    min-height: 86px;
+
+    padding: 16px;
+  }
+}
+
+
+/* ============================================================
+   SMALL MOBILE
+   ============================================================ */
+
+@media (max-width: 420px) {
+
+  .hero__inner,
+  .hero__stats {
+    width: calc(100% - 32px);
+  }
+
+  .hero__title {
+    font-size: 2.65rem;
+  }
+
+  .hero__visual {
+    height: 285px;
+  }
+
+  .hero__plate--main {
+    width: 210px;
+    height: 210px;
+  }
+
+  .hero__plate--main img {
+    max-width: 190px;
+    max-height: 190px;
+  }
+
+  .hero__cat-label {
+    width: 100%;
+  }
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  .hero__float,
+  .hero__eyebrow-dot {
+    animation: none !important;
+  }
+
+  .hero__bg-image {
+    transform: none !important;
+  }
+}
