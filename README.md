@@ -37,4 +37,4 @@ https://storied-chimera-2842f5.netlify.app
 https://github.com/funijunior/WFS361-BC-Food-Delivery
 
 ## Figma Design
-PASTE YOUR FIGMA LINK HERE
+https://www.figma.com/design/tC6N6EWiMPEliQMOyVmEYL/WFS361_BC_Food_Delivery_UI_UX_Design_Lufuno_Mokwebo?node-id=2-2&t=7zrxtDIH5KJarvLI-1
